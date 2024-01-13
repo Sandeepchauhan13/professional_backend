@@ -21,4 +21,7 @@ app.use(express.static("public"))
 // server se user ki cookies access and set thats the work of cookieparser 
 app.use(cookieParser())
 
+// routes import 
+import userRouter from './routes/user.routes.js';
+
 export { app }
