@@ -1,7 +1,7 @@
 import {v2 as cloudinary} from "cloudinary";
 // fs is filesystem by by node not to be installed
 import fs from "fs";
-import {v2 as cloudinary} from 'cloudinary';
+
           
 cloudinary.config({ 
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -17,14 +17,15 @@ const uploadOnCloudinary = async (localFilePath) => {
       resource_type: "auto"
     })
     //file has been uploaded successfully 
-    console.log("file is uploaded on cloudinary", response.url);
+    // console.log("file is uploaded on cloudinary", response.url);
+    fs.unlinkSync(localFilePath)
     return response;
   }catch (error){
 fs.unlinkSync(localFilePath) //remove the locally saved temporary file as the upload operation got failed
  return null;
 }
 }
-
+// 
 
 // cloudinary.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
 //   { public_id: "olympic_flag" }, 
